@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappa - Collettiva Rampicante</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../images/home/mappa-logo.png" alt="" class="nav-logo-img"> Collettiva Rampicante
+            </a>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="chi-siamo.html" class="nav-link active">Chi Siamo</a>
+                <a href="laboratori.html" class="nav-link">Laboratori</a>
+                <a href="galleria.html" class="nav-link">Galleria</a>
+                <a href="mappa.html" class="nav-link">Mappa</a>
+            </div>
+            <div class="nav-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-header" style="background: linear-gradient(135deg, #7BC043 0%, #9B59B6 100%);">
+        <h1>Mappa Interattiva del Progetto</h1>
+        <p>Scopri dove si svolgeranno i nostri laboratori a Bologna</p>
+    </section>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>Laboratori e Spazi del Progetto</h2>
+            <p>TALEE SEMI è l'archivio 3D del patrimonio arboreo del quartiere Fossolo-Due Madonne a Bologna: alberi, edifici e aree verdi, con le memorie raccolte dalla comunità. Esplora la mappa qui sotto, oppure aprila a schermo intero.</p>
+            
+            <!-- MAPPA TALEE SEMI (cartella ../mappa/ con index.html, contributi.geojson, dati/, MEDIA/) -->
+            <div style="margin: 30px 0 12px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <iframe
+                    src="../mappa/index.html"
+                    title="Mappa TALEE SEMI - alberi e memorie di Fossolo e Due Madonne"
+                    style="width: 100%; height: 75vh; min-height: 520px; max-height: 900px; border: none; display: block;"
+                    allow="fullscreen; geolocation"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+            <p style="text-align: center; margin: 0 0 30px;">
+                <a href="../mappa/index.html" style="color: #9B59B6; font-weight: 600; text-decoration: none;">
+                    <i class="fas fa-expand"></i> Apri la mappa a schermo intero
+                </a>
+            </p>
+
+            <div style="margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #7BC043;">
+                <h3 style="color: #7BC043; margin-top: 0;">📍 Punti Principali</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <h4 style="color: #7BC043; margin-bottom: 10px;">🏢 SALUS Space</h4>
+                        <p style="color: #666; margin: 0;"><strong>Via Malvezza 2/2, Bologna</strong></p>
+                        <p style="color: #666; font-size: 0.9rem; margin: 5px 0;">Hub principale per laboratori e incontri</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #9B59B6; margin-bottom: 10px;">🌳 Parco dei Cedri</h4>
+                        <p style="color: #666; margin: 0;"><strong>Ponte dei Cedri, Bologna</strong></p>
+                        <p style="color: #666; font-size: 0.9rem; margin: 5px 0;">Laboratori all'aperto e attività in natura</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #7BC043; margin-bottom: 10px;">🏘️ Fossolo-Due Madonne</h4>
+                        <p style="color: #666; margin: 0;"><strong>Quartiere Bologna</strong></p>
+                        <p style="color: #666; font-size: 0.9rem; margin: 5px 0;">Cuore della nostra comunità</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, rgba(123, 192, 67, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%); border-radius: 8px;">
+                <h3 style="text-align: center; color: #7BC043;">Come usare la mappa</h3>
+                <p style="text-align: center; color: #666; margin-top: 15px;">Usa la mappa interattiva sopra per individuare SALUS Space e il quartiere, e per scoprire gli alberi e le memorie che li legano alla comunità.</p>
+                <p style="text-align: center; color: #666; margin-top: 10px; font-size: 0.9rem;">Per domande sulla localizzazione, scrivi a <a href="mailto:collettivarampicante@gmail.com" style="color: #7BC043; text-decoration: none; font-weight: 600;">collettivarampicante@gmail.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Collettiva Rampicante. Tutti i diritti riservati.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/collettivarampicante?igsi=Mm1rM3k2anE5dTJp" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:collettivarampicante@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Termini</a>
+                <a href="https://www.instagram.com/collettivarampicante?igsi=Mm1rM3k2anE5dTJp" target="_blank">Contatti</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

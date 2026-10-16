@@ -1,0 +1,16 @@
+/* Pop up materiali laboratori – colori: verde #7BC043, viola #9B59B6 */
+.lab-clickable { cursor: pointer; }
+.lab-clickable:hover { text-decoration: underline; text-underline-offset: 4px; }
+.lab-clickable::after { content: " \1F4F7"; font-size: .8em; }   /* 📷 indizio visivo */
+
+.lab-modal { position: fixed; inset: 0; z-index: 1000; background: rgba(30, 20, 40, .72);
+  display: flex; align-items: center; justify-content: center; }
+.lab-modal[hidden] { display: none; }
+.lab-modal-box { position: relative; width: min(900px, 94vw); max-height: 90vh; overflow-y: auto;
+  background: #fff; border-radius: 12px; border-top: 6px solid #7BC043; padding: 1.2rem; }
+.lab-modal-box h2 { color: #9B59B6; margin: 0 3rem .8rem 0; font-size: 1.3rem; }
+.lab-modal-box h3 { color: #7BC043; margin: 1.2rem 0 .5rem; }
+.lab-modal-close { position: sticky; top: 0; float: right; width: 40px; height: 40px; border: 0;
+  border-radius: 50%; background: #9B59B6; color: #fff; font-size: 1.6rem; cursor: pointer; }
+.lab-modal-box video { width: 100%; margin-bottom: .8rem; border-radius: 8px; background: #000; }
+.lab-modal-box audio { width: 100%; margin-bottom: .6rem; }
