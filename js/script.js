@@ -211,7 +211,7 @@ const EST_MEDIA = { img: /\.(jpe?g|png|webp|gif|avif)$/i, vid: /\.(mp4|webm|mov|
 let _elencoRepo;
 function listaFile(cartella) {
     if (!_elencoRepo) {
-        _elencoRepo = fetch('https://api.github.com/repos/aboschi80-ux/CollettivaRampicante/git/trees/main?recursive=1')
+        _elencoRepo = fetch('https://api.github.com/repos/collettivarampicante/CollettivaRampicante/git/trees/main?recursive=1')
             .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
             .then(d => d.tree.filter(f => f.type === 'blob' && f.path.startsWith('images/')).map(f => f.path))
             .catch(e => { _elencoRepo = null; throw e; });

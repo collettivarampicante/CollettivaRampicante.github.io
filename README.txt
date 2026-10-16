@@ -1,5 +1,5 @@
 COLLETTIVA RAMPICANTE - Sito del progetto europeo TALEE
-Sito statico pubblicato con GitHub Pages: https://aboschi80-ux.github.io/CollettivaRampicante/
+Sito statico pubblicato con GitHub Pages: https://collettivarampicante.github.io/CollettivaRampicante/
 
 CARTELLE
 index.html        Home page del sito
