@@ -1,5 +1,3 @@
-// Pop up dei laboratori: click sul titolo -> foto, video e audio di images/media/LAB<n>
-// (LAB0 = primo laboratorio della pagina, LAB1 = secondo, ...). Usa listaFile() e il lightbox di script.js
 (function () {
     const el = (tag, props, parent) => Object.assign(parent.appendChild(document.createElement(tag)), props);
 
@@ -14,6 +12,8 @@
     modal.addEventListener('click', e => { if (e.target === modal || e.target.className === 'lab-modal-close') chiudi(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !document.querySelector('.lightbox')) chiudi(); });
 
+    const urlFile = (cartella, f) => '../' + cartella + '/' + encodeURIComponent(f);
+
     document.querySelectorAll('.lab-event').forEach((evento, n) => {
         const h = evento.querySelector('h3');
         h.classList.add('lab-clickable');
@@ -27,20 +27,41 @@
 
             listaFile(cartella).then(files => {
                 corpo.textContent = '';
-                [[EST_MEDIA.vid, 'Video'], [EST_MEDIA.aud, 'Audio'], [EST_MEDIA.img, 'Foto']].forEach(([re, nome]) => {
+                const sezioni = [[EST_MEDIA.vid, 'Video'], [EST_MEDIA.aud, 'Audio'], [EST_MEDIA.img, 'Foto']];
+                let griglia = null;
+
+                sezioni.forEach(([re, nome]) => {
                     const lista = files.filter(f => re.test(f));
                     if (!lista.length) return;
                     el('h3', { textContent: nome }, corpo);
-                    const box = re === EST_MEDIA.img ? el('div', { className: 'gallery-grid' }, corpo) : corpo;
+                    const isImg = re === EST_MEDIA.img;
+                    const box = isImg ? (griglia = el('div', { className: 'gallery-grid' }, corpo)) : corpo;
                     lista.forEach(f => {
-                        const url = '../' + cartella + '/' + encodeURIComponent(f);
-                        if (re === EST_MEDIA.img) el('img', { src: url, alt: f, loading: 'lazy' }, el('div', { className: 'gallery-item' }, box));
+                        const url = urlFile(cartella, f);
+                        if (isImg) {
+                            const item = el('div', { className: 'gallery-item' }, box);
+                            const img = el('img', { src: url, alt: f, loading: 'lazy' }, item);
+                            // formato non visualizzabile dal browser (es. HEIC): mostra un link
+                            img.onerror = () => {
+                                item.replaceChildren();
+                                el('a', { href: url, textContent: f, target: '_blank', rel: 'noopener' }, item);
+                            };
+                        }
                         else if (re === EST_MEDIA.vid) el('video', { src: url, controls: true, preload: 'metadata' }, box);
                         else el('audio', { src: url, controls: true, preload: 'none' }, box);
                     });
                 });
+
+                // Qualsiasi altro file (pdf, formati strani...) come link di download
+                const altri = files.filter(f => !f.startsWith('.') && !sezioni.some(([re]) => re.test(f)));
+                if (altri.length) {
+                    el('h3', { textContent: 'Altri file' }, corpo);
+                    const ul = el('ul', {}, corpo);
+                    altri.forEach(f => el('a', { href: urlFile(cartella, f), textContent: f, target: '_blank', rel: 'noopener' }, el('li', {}, ul)));
+                }
+
                 if (!corpo.firstChild) corpo.textContent = 'Il materiale di questo laboratorio sarà caricato a breve.';
-                setupGalleryLightbox();
+                if (griglia) setupGalleryLightbox(griglia);
             }).catch(() => { corpo.textContent = 'Impossibile caricare i materiali, riprova tra poco.'; });
         });
     });
